@@ -7,7 +7,7 @@ export default function Sidebar() {
       <div className="fixed flex flex-col items-start justify-between h-screen w-64 bg-zinc-900 p-4">
         <Button variant="secondary">Welcome</Button>
 
-        <ul>
+        <ul className="space-y-4">
           <li>
             <Button variant="customButton">
               <Link href="/dashboard">Dashboard</Link>
@@ -19,6 +19,8 @@ export default function Sidebar() {
             </Button>
           </li>
         </ul>
+
+        <p className="text-zinc-400 text-xs">&copy; Malish 2024</p>
       </div>
     </>
   );

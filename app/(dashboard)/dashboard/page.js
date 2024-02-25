@@ -72,6 +72,10 @@ export default function Dashboard() {
     totalAmount,
   };
 
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
+
   return (
     <>
       <div className="p-4 lg:pl-72 lg:py-16 bg-zinc-900">

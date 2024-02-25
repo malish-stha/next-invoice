@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { UserButton } from "@clerk/nextjs";
 import { useState } from "react";
+import PreviewInvoice from "../_components/previewInvoice";
 
 export default function Dashboard() {
   const [name, setName] = useState("");
@@ -33,6 +34,44 @@ export default function Dashboard() {
 
   const [previewInvoice, setPreviewInvoice] = useState(false);
 
+  const values = {
+    name,
+    setName,
+    email,
+    setEmail,
+    address,
+    setAddress,
+    phoneNumber,
+    setPhoneNumber,
+    bankName,
+    setBankName,
+    bankAccountNumber,
+    setBankAccountNumber,
+    invoiceDate,
+    setInvoiceDate,
+    dueDate,
+    setDueDate,
+    clientName,
+    setClientName,
+    clientEmail,
+    setClientEmail,
+    clientAddress,
+    setClientAddress,
+    item,
+    setItem,
+    quantity,
+    setQuantity,
+    price,
+    setPrice,
+    total,
+    setTotal,
+    items,
+    setItems,
+    notes,
+    setNotes,
+    totalAmount,
+  };
+
   return (
     <>
       <div className="p-4 lg:pl-72 lg:py-16 bg-zinc-900">
@@ -44,7 +83,7 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <section className="lg:pl-72 px-4 mt-8 lg:grid lg:grid-cols-2">
+      <section className="lg:pl-72 px-4 mt-8 lg:grid lg:grid-cols-2 gap-8">
         <div>
           <form>
             <h2 className="text-zinc-900 font-bold text-xl mb-8">
@@ -299,8 +338,9 @@ export default function Dashboard() {
           </form>
         </div>
         {/* Invoice Preview */}
-        <div>{name}</div>
-        <div></div>
+        <div>
+          <PreviewInvoice values={values} />
+        </div>
       </section>
     </>
   );

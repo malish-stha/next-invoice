@@ -1,7 +1,38 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { UserButton } from "@clerk/nextjs";
+import { useState } from "react";
 
 export default function Dashboard() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [bankName, setBankName] = useState("");
+  const [bankAccountNumber, setBankAccountNumber] = useState("");
+  const [invoiceDate, setInvoiceDate] = useState("");
+  const [dueDate, setDueDate] = useState("");
+
+  // Client state values
+  const [clientName, setClientName] = useState("");
+  const [clientEmail, setClientEmail] = useState("");
+  const [clientAddress, setClientAddress] = useState("");
+
+  // Table state values
+  const [item, setItem] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const [price, setPrice] = useState("");
+  const [total, setTotal] = useState(0);
+  const [items, setItems] = useState([]);
+  const [totalAmount, setTotalAmount] = useState(0);
+
+  const [notes, setNotes] = useState("");
+
+  const [isEditing, setIsEditing] = useState(false);
+
+  const [previewInvoice, setPreviewInvoice] = useState(false);
+
   return (
     <>
       <div className="p-4 lg:pl-72 lg:py-16 bg-zinc-900">
@@ -30,7 +61,8 @@ export default function Dashboard() {
                     name="name"
                     id="name"
                     placeholder="Your Name"
-                    className="input"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                   />
                   <small>Your official name or company name.</small>
                 </article>
@@ -44,7 +76,8 @@ export default function Dashboard() {
                     name="email"
                     id="email"
                     placeholder="Your Email"
-                    className="input"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                   <small>Your email is optional.</small>
                 </article>
@@ -60,7 +93,8 @@ export default function Dashboard() {
                     name="address"
                     id="address"
                     placeholder="Your Address"
-                    className="input"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
                   />
                   <small>
                     Your physical address, company address, street name, or
@@ -77,7 +111,8 @@ export default function Dashboard() {
                     name="phone-number"
                     id="phone-number"
                     placeholder="Your Phone Number"
-                    className="input"
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
                   />
                   <small>Your phone number or company phone number.</small>
                 </article>
@@ -93,7 +128,8 @@ export default function Dashboard() {
                     name="bankName"
                     id="bankName"
                     placeholder="Your Bank Name"
-                    className="input"
+                    value={bankName}
+                    onChange={(e) => setBankName(e.target.value)}
                   />
                 </article>
 
@@ -106,6 +142,8 @@ export default function Dashboard() {
                     name="bankAccountNumber"
                     id="bankAccountNumber"
                     placeholder="Your Bank Account Number"
+                    value={bankAccountNumber}
+                    onChange={(e) => setBankAccountNumber(e.target.value)}
                   />
                 </article>
               </div>
@@ -120,6 +158,8 @@ export default function Dashboard() {
                     name="invoice-date"
                     id="invoice-date"
                     placeholder="Invoice Date"
+                    value={invoiceDate}
+                    onChange={(e) => setInvoiceDate(e.target.value)}
                   />
                 </article>
 
@@ -132,6 +172,8 @@ export default function Dashboard() {
                     name="due-date"
                     id="due-date"
                     placeholder="Invoice Due Date"
+                    value={dueDate}
+                    onChange={(e) => setDueDate(e.target.value)}
                   />
                 </article>
               </div>
@@ -150,6 +192,8 @@ export default function Dashboard() {
                     name="client-name"
                     id="client-name"
                     placeholder="Client's name"
+                    value={clientName}
+                    onChange={(e) => setClientName(e.target.value)}
                   />
                 </article>
 
@@ -160,6 +204,8 @@ export default function Dashboard() {
                     name="client-email"
                     id="client-email"
                     placeholder="Client email"
+                    value={clientEmail}
+                    onChange={(e) => setClientEmail(e.target.value)}
                   />
                 </article>
               </div>
@@ -172,6 +218,8 @@ export default function Dashboard() {
                     name="client-address"
                     id="client-address"
                     placeholder="Client's address"
+                    value={clientAddress}
+                    onChange={(e) => setClientAddress(e.target.value)}
                   />
                 </article>
               </div>
@@ -190,6 +238,8 @@ export default function Dashboard() {
                     name="item-name"
                     id="item-name"
                     placeholder="Item name"
+                    value={item}
+                    onChange={(e) => setItem(e.target.value)}
                   />
                 </article>
 
@@ -200,6 +250,8 @@ export default function Dashboard() {
                     name="quantity"
                     id="quantity"
                     placeholder="0"
+                    value={quantity}
+                    onChange={(e) => setQuantity(e.target.value)}
                   />
                 </article>
               </div>
@@ -211,8 +263,8 @@ export default function Dashboard() {
                     name="price"
                     id="price"
                     placeholder="Price"
-                    // value={price}
-                    // onChange={(e) => setPrice(e.target.value)}
+                    value={price}
+                    onChange={(e) => setPrice(e.target.value)}
                   />
                 </article>
 
@@ -235,8 +287,8 @@ export default function Dashboard() {
                     cols="30"
                     rows="5"
                     placeholder="Important information the client should know about"
-                    // value={notes}
-                    // onChange={(e) => setNotes(e.target.value)}
+                    value={notes}
+                    onChange={(e) => setNotes(e.target.value)}
                   ></textarea>
                 </article>
               </div>
@@ -247,6 +299,7 @@ export default function Dashboard() {
           </form>
         </div>
         {/* Invoice Preview */}
+        <div>{name}</div>
         <div></div>
       </section>
     </>

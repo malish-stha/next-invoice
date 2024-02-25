@@ -78,7 +78,7 @@
   @apply flex flex-col items-start justify-start space-y-2;
 }
 label {
-  @apply font-normal text-zinc-900 text-sm;
+  @apply font-bold text-zinc-900 text-sm;
 }
 input,
 textarea {

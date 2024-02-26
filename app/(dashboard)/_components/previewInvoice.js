@@ -46,7 +46,9 @@ export default function PreviewInvoice({ values }) {
                   <td className="text-muted-foreground text-sm">
                     {item.price}
                   </td>
-                  {/* <td className="text-muted-foreground text-sm">3000099</td> */}
+                  <td className="text-muted-foreground text-sm">
+                    {item.total}
+                  </td>
                 </tr>
               ))}
             </tbody>

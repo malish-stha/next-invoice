@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { UserButton } from "@clerk/nextjs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PreviewInvoice from "../_components/previewInvoice";
 
 export default function Dashboard() {
@@ -80,12 +80,21 @@ export default function Dashboard() {
       item,
       quantity,
       price,
+      total: quantity * price,
     };
     setItems([newItem, ...items]);
     setItem("");
     setQuantity("");
     setPrice("");
   }
+
+  function calculateTotal() {
+    setTotal(quantity * price);
+  }
+
+  useEffect(() => {
+    calculateTotal();
+  }, [quantity, price]);
 
   return (
     <>
@@ -324,7 +333,7 @@ export default function Dashboard() {
 
                 <article className="article">
                   <label htmlFor="total">Total</label>
-                  <div>0</div>
+                  <div>{total}</div>
                 </article>
               </div>
               <div className="grid gap-4 md:grid-cols-2">

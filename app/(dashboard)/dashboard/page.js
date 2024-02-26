@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { UserButton } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 import PreviewInvoice from "../_components/previewInvoice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Dashboard() {
   const [name, setName] = useState("");
@@ -75,17 +77,22 @@ export default function Dashboard() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    const newItem = {
-      id: new Date().getTime.toString(),
-      item,
-      quantity,
-      price,
-      total: quantity * price,
-    };
-    setItems([newItem, ...items]);
-    setItem("");
-    setQuantity("");
-    setPrice("");
+    if (!item || !quantity || !price) {
+      toast.error("Please fill in all the fields");
+    } else {
+      const newItem = {
+        id: new Date().getTime.toString(),
+        item,
+        quantity,
+        price,
+        total: quantity * price,
+      };
+      setItems([newItem, ...items]);
+      setItem("");
+      setQuantity("");
+      setPrice("");
+      toast.success("New items added");
+    }
   }
 
   function calculateTotal() {
@@ -98,6 +105,7 @@ export default function Dashboard() {
 
   return (
     <>
+      <ToastContainer />
       <div className="p-4 lg:pl-72 lg:py-16 bg-zinc-900">
         <div className="flex items-center justify-between ">
           <h1 className="text-4xl text-white font-bold lg:text-5xl">

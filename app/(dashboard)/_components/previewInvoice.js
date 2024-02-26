@@ -1,4 +1,5 @@
 import React from "react";
+import { format } from "date-fns/format";
 
 export default function PreviewInvoice({ values }) {
   return (
@@ -21,9 +22,14 @@ export default function PreviewInvoice({ values }) {
         <article className="my-8 flex flex-col items-end justify-end">
           <h2 className="text-2xl text-zinc-900 font-bold">Invoice Details</h2>
           <p className="text-muted-foreground">
-            Invoice Date: {values.invoiceDate}
+            Invoice Date:{" "}
+            {values.invoiceDate &&
+              format(new Date(values.invoiceDate), "do MMMM yyyy")}
           </p>
-          <p className="text-muted-foreground">Due Date: {values.dueDate}</p>
+          <p className="text-muted-foreground">
+            Due Date:{" "}
+            {values.dueDate && format(new Date(values.dueDate), "do MMMM yyyy")}
+          </p>
         </article>
 
         <article className="mb-8">

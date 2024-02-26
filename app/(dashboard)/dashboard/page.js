@@ -348,6 +348,31 @@ export default function Dashboard() {
                 <Button>Add Item</Button>
               </div>
 
+              <div className="space-y-4">
+                {items.map((item) => (
+                  <article
+                    key={item.id}
+                    className="flex items-center justify-between gap-4"
+                  >
+                    <div className="flex items-center justify-start gap-4">
+                      <p>{item.item} </p>
+                      <p>{item.quantity}</p>
+                      <p>{item.price}</p>
+                    </div>
+                    <div>
+                      <ul className="flex items-center justify-center gap-4">
+                        <li>
+                          <Button variant="destructive">Delete</Button>
+                        </li>
+                        <li>
+                          <Button>Edit</Button>
+                        </li>
+                      </ul>
+                    </div>
+                  </article>
+                ))}
+              </div>
+
               {/* Text Area */}
               <div className="grid gap-4 md:grid-cols-2">
                 <article className="article">

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import PreviewInvoice from "../_components/previewInvoice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Pencil1Icon, TrashIcon } from "@radix-ui/react-icons";
 
 export default function Dashboard() {
   const [name, setName] = useState("");
@@ -362,10 +363,14 @@ export default function Dashboard() {
                     <div>
                       <ul className="flex items-center justify-center gap-4">
                         <li>
-                          <Button variant="destructive">Delete</Button>
+                          <Button variant="destructive">
+                            <TrashIcon />
+                          </Button>
                         </li>
                         <li>
-                          <Button>Edit</Button>
+                          <Button>
+                            <Pencil1Icon />
+                          </Button>
                         </li>
                       </ul>
                     </div>

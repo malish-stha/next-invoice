@@ -74,6 +74,17 @@ export default function Dashboard() {
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    const newItem = {
+      id: new Date().getTime.toString(),
+      item,
+      quantity,
+      price,
+    };
+    setItems([newItem, ...items]);
+    setItem("");
+    setQuantity("");
+    setPrice("");
   }
 
   return (
@@ -89,7 +100,7 @@ export default function Dashboard() {
 
       <section className="lg:pl-72 px-4 mt-8 lg:grid lg:grid-cols-2 gap-8">
         <div>
-          <form>
+          <form onSubmit={handleSubmit}>
             <h2 className="text-zinc-900 font-bold text-xl mb-8">
               Your Details
             </h2>

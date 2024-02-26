@@ -3,7 +3,7 @@ import React from "react";
 export default function PreviewInvoice({ values }) {
   return (
     <>
-      <div className=" sticky top-4 border border-zinc-300 p-4 rounded-lg scale-75">
+      <div className=" sticky top-4 border border-zinc-300 p-4 rounded-lg scale-75 ">
         <article className="flex flex-col items-end justify-end">
           <h2 className="text-2xl text-slate-900 font-bold">{values.name}</h2>
           <p className="text-muted-foreground">{values.email}</p>
@@ -37,12 +37,18 @@ export default function PreviewInvoice({ values }) {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td className="text-muted-foreground text-sm">Computer</td>
-                <td className="text-muted-foreground text-sm">10</td>
-                <td className="text-muted-foreground text-sm">10000</td>
-                <td className="text-muted-foreground text-sm">3000099</td>
-              </tr>
+              {values.items.map((item) => (
+                <tr key={item.id}>
+                  <td className="text-muted-foreground text-sm">{item.item}</td>
+                  <td className="text-muted-foreground text-sm">
+                    {item.quantity}
+                  </td>
+                  <td className="text-muted-foreground text-sm">
+                    {item.price}
+                  </td>
+                  {/* <td className="text-muted-foreground text-sm">3000099</td> */}
+                </tr>
+              ))}
             </tbody>
           </table>
         </article>

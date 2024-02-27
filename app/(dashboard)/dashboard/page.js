@@ -7,6 +7,7 @@ import PreviewInvoice from "../_components/previewInvoice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Pencil1Icon, TrashIcon } from "@radix-ui/react-icons";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Dashboard() {
   const [name, setName] = useState("");
@@ -82,7 +83,7 @@ export default function Dashboard() {
       toast.error("Please fill in all the fields");
     } else {
       const newItem = {
-        id: new Date().getTime.toString(),
+        id: uuidv4(),
         item,
         quantity,
         price,
@@ -104,6 +105,9 @@ export default function Dashboard() {
     calculateTotal();
   }, [quantity, price]);
 
+  function handleDelete(id) {
+    setItems(items.filter((row) => row.id !== id));
+  }
   return (
     <>
       <ToastContainer />
@@ -363,7 +367,10 @@ export default function Dashboard() {
                     <div>
                       <ul className="flex items-center justify-center gap-4">
                         <li>
-                          <Button variant="destructive">
+                          <Button
+                            variant="destructive"
+                            onClick={() => handleDelete(item.id)}
+                          >
                             <TrashIcon />
                           </Button>
                         </li>

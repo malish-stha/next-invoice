@@ -117,6 +117,7 @@ export default function Dashboard() {
     setItem(editingRow.item);
     setQuantity(editingRow.quantity);
     setPrice(editingRow.price);
+    toast.success("You have edited an item!");
   }
   return (
     <>

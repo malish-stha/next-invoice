@@ -107,6 +107,7 @@ export default function Dashboard() {
 
   function handleDelete(id) {
     setItems(items.filter((row) => row.id !== id));
+    toast.error("Item deleted successfuly!");
   }
   return (
     <>

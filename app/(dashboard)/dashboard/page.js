@@ -109,6 +109,15 @@ export default function Dashboard() {
     setItems(items.filter((row) => row.id !== id));
     toast.error("Item deleted successfuly!");
   }
+
+  function handleEdit(id) {
+    const editingRow = items.find((row) => row.id === id);
+    setItems(items.filter((row) => row.id !== id));
+    setIsEditing(true);
+    setItem(editingRow.item);
+    setQuantity(editingRow.quantity);
+    setPrice(editingRow.price);
+  }
   return (
     <>
       <ToastContainer />
@@ -376,7 +385,7 @@ export default function Dashboard() {
                           </Button>
                         </li>
                         <li>
-                          <Button>
+                          <Button onClick={() => handleEdit(item.id)}>
                             <Pencil1Icon />
                           </Button>
                         </li>

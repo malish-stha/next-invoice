@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Pencil1Icon, TrashIcon } from "@radix-ui/react-icons";
 import { v4 as uuidv4 } from "uuid";
 import collect from "collect.js";
+import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import { XIcon } from "lucide-react";
 
@@ -456,12 +457,14 @@ export default function Dashboard() {
         {previewInvoice && (
           <div className="fixed top-0 left-0 right-0 bottom-0 bg-black/75">
             <div className="max-w-5xl mx-auto">
-              <ul className="mt-16">
+              <ul className="mt-16 flex items-center justify-between">
                 <li>
-                  <Button variant="secondary">Download Invoice</Button>
+                  <Button onClick={createPDF} variant="secondary">
+                    Download Invoice
+                  </Button>
                 </li>
                 <li>
-                  <Button>
+                  <Button onClick={() => setPreviewInvoice(false)}>
                     <XIcon />
                   </Button>
                 </li>

@@ -63,7 +63,8 @@ export default function PreviewInvoice({ values }) {
 
         <article>
           <h2 className="text-4xl text-zinc-900 font-bold my-8">
-            {values.totaAmount}
+            Rs.
+            {values.totalAmount}
           </h2>
         </article>
 

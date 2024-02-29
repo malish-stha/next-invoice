@@ -39,44 +39,6 @@ export default function Dashboard() {
 
   const [previewInvoice, setPreviewInvoice] = useState(false);
 
-  const values = {
-    name,
-    setName,
-    email,
-    setEmail,
-    address,
-    setAddress,
-    phoneNumber,
-    setPhoneNumber,
-    bankName,
-    setBankName,
-    bankAccountNumber,
-    setBankAccountNumber,
-    invoiceDate,
-    setInvoiceDate,
-    dueDate,
-    setDueDate,
-    clientName,
-    setClientName,
-    clientEmail,
-    setClientEmail,
-    clientAddress,
-    setClientAddress,
-    item,
-    setItem,
-    quantity,
-    setQuantity,
-    price,
-    setPrice,
-    total,
-    setTotal,
-    items,
-    setItems,
-    notes,
-    setNotes,
-    totalAmount,
-  };
-
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -114,7 +76,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     calculateTotalAmount();
-  }, [items]);
+  });
 
   function handleDelete(id) {
     setItems(items.filter((row) => row.id !== id));
@@ -130,6 +92,44 @@ export default function Dashboard() {
     setPrice(editingRow.price);
     toast.success("You have edited an item!");
   }
+
+  const values = {
+    name,
+    setName,
+    email,
+    setEmail,
+    address,
+    setAddress,
+    phoneNumber,
+    setPhoneNumber,
+    bankName,
+    setBankName,
+    bankAccountNumber,
+    setBankAccountNumber,
+    invoiceDate,
+    setInvoiceDate,
+    dueDate,
+    setDueDate,
+    clientName,
+    setClientName,
+    clientEmail,
+    setClientEmail,
+    clientAddress,
+    setClientAddress,
+    item,
+    setItem,
+    quantity,
+    setQuantity,
+    price,
+    setPrice,
+    total,
+    setTotal,
+    items,
+    setItems,
+    notes,
+    setNotes,
+    totalAmount,
+  };
   return (
     <>
       <ToastContainer />

@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Pencil1Icon, TrashIcon } from "@radix-ui/react-icons";
 import { v4 as uuidv4 } from "uuid";
 import collect from "collect.js";
+import html2canvas from "html2canvas";
 
 export default function Dashboard() {
   const [name, setName] = useState("");
@@ -91,6 +92,22 @@ export default function Dashboard() {
     setQuantity(editingRow.quantity);
     setPrice(editingRow.price);
     toast.success("You have edited an item!");
+  }
+
+  function createPDF() {
+    const invoice = document.getElementById("pdf");
+    html2canvas(invoice, {
+      logging: true,
+      letterRendering: 1,
+      useCORS: true,
+    }).then((canvas) => {
+      const imgWidth = 208;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      const imgData = canvas.toDataURL("img/png");
+      const pdf = new jsPDF("portrait", "mm", "a4");
+      pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
+      pdf.save(`${clientName}.pdf`);
+    });
   }
 
   const values = {

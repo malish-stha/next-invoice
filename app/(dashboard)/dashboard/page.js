@@ -8,6 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Pencil1Icon, TrashIcon } from "@radix-ui/react-icons";
 import { v4 as uuidv4 } from "uuid";
+import collect from "collect.js";
 
 export default function Dashboard() {
   const [name, setName] = useState("");
@@ -104,6 +105,16 @@ export default function Dashboard() {
   useEffect(() => {
     calculateTotal();
   }, [quantity, price]);
+
+  function calculateTotalAmount() {
+    const allItems = items.map((item) => item.total);
+
+    setTotalAmount(collect(allItems).sum());
+  }
+
+  useEffect(() => {
+    calculateTotalAmount();
+  }, [items]);
 
   function handleDelete(id) {
     setItems(items.filter((row) => row.id !== id));

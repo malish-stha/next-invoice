@@ -61,6 +61,12 @@ export default function PreviewInvoice({ values }) {
           </table>
         </article>
 
+        <article>
+          <h2 className="text-4xl text-zinc-900 font-bold my-8">
+            {values.totaAmount}
+          </h2>
+        </article>
+
         <article className="pb-8">
           <h4 className="text-2xl text-slate-900 font-bold">
             Additional Notes:

@@ -10,6 +10,7 @@ import { Pencil1Icon, TrashIcon } from "@radix-ui/react-icons";
 import { v4 as uuidv4 } from "uuid";
 import collect from "collect.js";
 import html2canvas from "html2canvas";
+import { XIcon } from "lucide-react";
 
 export default function Dashboard() {
   const [name, setName] = useState("");
@@ -441,7 +442,9 @@ export default function Dashboard() {
               </div>
             </div>
             <div className="mt-8 py-12">
-              <Button>Preview Invoice</Button>
+              <Button onClick={() => setPreviewInvoice(true)}>
+                Preview Invoice
+              </Button>
             </div>
           </form>
         </div>
@@ -449,6 +452,24 @@ export default function Dashboard() {
         <div>
           <PreviewInvoice values={values} />
         </div>
+
+        {previewInvoice && (
+          <div className="fixed top-0 left-0 right-0 bottom-0 bg-black/75">
+            <div className="max-w-5xl mx-auto">
+              <ul className="mt-16">
+                <li>
+                  <Button variant="secondary">Download Invoice</Button>
+                </li>
+                <li>
+                  <Button>
+                    <XIcon />
+                  </Button>
+                </li>
+              </ul>
+              <PreviewInvoice values={values} />
+            </div>
+          </div>
+        )}
       </section>
     </>
   );
